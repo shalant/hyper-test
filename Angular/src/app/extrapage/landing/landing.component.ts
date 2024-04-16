@@ -32,7 +32,7 @@ import { RouterModule } from '@angular/router'
         <!-- logo -->
         <a routerLink="/" class="navbar-brand me-lg-5">
           <img
-            src="assets/images/logo.png"
+            src="assets/images/zaner/zaner-logo.png"
             alt="logo"
             class="logo-dark"
             height="22"
@@ -56,22 +56,16 @@ import { RouterModule } from '@angular/router'
           <!-- left menu -->
           <ul class="navbar-nav me-auto align-items-center">
             <li class="nav-item mx-lg-1">
-              <a class="nav-link active" href="javascript:void(0);">Home</a>
+              <a class="nav-link active" href="/">Home</a>
             </li>
             <li class="nav-item mx-lg-1">
-              <a class="nav-link active" href="javascript:void(0);">Features</a>
+              <a class="nav-link active" href="/dashboard-analytics">Dashboard</a>
             </li>
             <li class="nav-item mx-lg-1">
-              <a class="nav-link active" href="javascript:void(0);">Pricing</a>
+              <a class="nav-link active" href="javascript:void(0);">USDA Data</a>
             </li>
             <li class="nav-item mx-lg-1">
-              <a class="nav-link active" href="javascript:void(0);">FAQs</a>
-            </li>
-            <li class="nav-item mx-lg-1">
-              <a class="nav-link active" href="javascript:void(0);">Clients</a>
-            </li>
-            <li class="nav-item mx-lg-1">
-              <a class="nav-link active" href="javascript:void(0);">Contact</a>
+              <a class="nav-link active" href="javascript:void(0);">My Data</a>
             </li>
           </ul>
 

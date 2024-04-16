@@ -104,15 +104,25 @@ import { GoogleComponent } from './maps/google/google.component'
 import { Alt404Component } from './extrapages/alt-404/alt-404.component'
 import { ElementsComponent } from './forms/elements/elements.component'
 import { PreloaderComponent } from './extrapages/preloader/preloader.component'
+import { LandingComponent } from '../extrapage/landing/landing.component'
 
 export const PAGE_ROUTES: Route[] = [
-  // Dashboard
-  { path: '', component: IndexComponent, data: { title: 'Dashboard' } },
+  // Set home route to landing page
+  { path: '', component: LandingComponent, data: { title: 'Dashboard' } },
   {
-    path: 'dashboard-analytics',
-    component: AnalyticsComponent,
-    data: { title: 'Analytics' },
+    path: 'landing',
+    component: LandingComponent,
+    data: { title: 'Landing' },
   },
+
+
+  // Dashboard
+  // { path: '', component: IndexComponent, data: { title: 'Dashboard' } },
+  // {
+  //   path: 'dashboard-analytics',
+  //   component: AnalyticsComponent,
+  //   data: { title: 'Analytics' },
+  // },
   {
     path: 'dashboard-projects',
     component: ProjectsComponent,

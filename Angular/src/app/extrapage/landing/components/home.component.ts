@@ -12,9 +12,7 @@ import { Component } from '@angular/core'
             <div class="mt-md-4">
               <div>
                 <span class="badge bg-danger font-13 rounded-pill">New</span>
-                <span class="text-white-50 ms-1">
-                  Welcome to new landing page</span
-                >
+                <span class="text-white-50 ms-1">Welcome to the new Zaner Agricultural Research App</span>
               </div>
               <h2 class="text-white fw-normal mb-4 mt-3 lh-base">
                 Hyper - Responsive Web UI Kit & Dashboard Template
@@ -39,7 +37,7 @@ import { Component } from '@angular/core'
           <div class="col-md-5 offset-md-2">
             <div class="text-md-end mt-3 mt-md-0">
               <img
-                src="assets/images/svg/startup.svg"
+                src="assets/images/zaner/agpic1.jpg"
                 alt=""
                 class="img-fluid"
               />
