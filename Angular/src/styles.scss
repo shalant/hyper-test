@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'nouislider/dist/nouislider.css';
+
+@import 'quill/dist/quill.bubble.css';
+// or
+@import 'quill/dist/quill.snow.css';
+
+.apex-charts {
+  div {
+    min-height: 0 !important;
+  }
+}
+
+.emoji-mart {
+  position: absolute;
+  bottom: 30px;
+  right: 0;
+}
+
+.emoji-mart-preview {
+  display: none;
+}
