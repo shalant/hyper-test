@@ -7,6 +7,12 @@ export const MENU: MenuItem[] = [
     isTitle: true,
   },
   {
+    key: 'UsdaData',
+    label: 'UsdaData',
+    icon: 'Usda-Logo',
+    link: '/usda-data'
+  },
+  {
     key: 'dashboards',
     icon: 'uil-home-alt',
     label: 'dashboards',

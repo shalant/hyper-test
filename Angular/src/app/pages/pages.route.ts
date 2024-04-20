@@ -105,6 +105,7 @@ import { Alt404Component } from './extrapages/alt-404/alt-404.component'
 import { ElementsComponent } from './forms/elements/elements.component'
 import { PreloaderComponent } from './extrapages/preloader/preloader.component'
 import { LandingComponent } from '../extrapage/landing/landing.component'
+import { UsdaDataComponent } from './zaner/usda-data/usda-data.component'
 
 export const PAGE_ROUTES: Route[] = [
   // Set home route to landing page
@@ -114,7 +115,11 @@ export const PAGE_ROUTES: Route[] = [
     component: LandingComponent,
     data: { title: 'Landing' },
   },
-
+  {
+    path: 'usda-data',
+    component: UsdaDataComponent,
+    data: { title: 'Usda-Data' },
+  },
 
   // Dashboard
   // { path: '', component: IndexComponent, data: { title: 'Dashboard' } },
