@@ -9,7 +9,7 @@ export const MENU: MenuItem[] = [
   {
     key: 'UsdaData',
     label: 'UsdaData',
-    icon: 'Usda-Logo',
+    icon: 'uil-chart-line',
     link: '/usda-data'
   },
   {

@@ -123,11 +123,11 @@ export const PAGE_ROUTES: Route[] = [
 
   // Dashboard
   // { path: '', component: IndexComponent, data: { title: 'Dashboard' } },
-  // {
-  //   path: 'dashboard-analytics',
-  //   component: AnalyticsComponent,
-  //   data: { title: 'Analytics' },
-  // },
+  {
+    path: 'dashboard-analytics',
+    component: AnalyticsComponent,
+    data: { title: 'Analytics' },
+  },
   {
     path: 'dashboard-projects',
     component: ProjectsComponent,
