@@ -31,7 +31,8 @@ export class TitleService {
     if (route.snapshot.data['title']) {
       this.titleService.setTitle(
         route.snapshot.data['title'] +
-          ' | Hyper - Responsive Angular Admin & Dashboard Template'
+          // ' | Hyper - Responsive Angular Admin & Dashboard Template'
+          'Zaner Agriculture Reseach'
       )
     }
   }

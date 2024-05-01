@@ -1,0 +1,34 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "build",
+			"path": "Angular",
+			"group": "build",
+			"problemMatcher": [],
+			"label": "npm: build - Angular",
+			"detail": "ng build"
+		},
+		{
+			"type": "npm",
+			"script": "watch",
+			"path": "Angular",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "npm: watch - Angular",
+			"detail": "ng build --watch --configuration development"
+		},
+		{
+			"type": "npm",
+			"script": "start",
+			"path": "Angular",
+			"problemMatcher": [],
+			"label": "start",
+			"detail": "ng serve"
+		}
+	]
+}

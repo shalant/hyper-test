@@ -1,0 +1,83 @@
+$(document).ready(function(){
+	
+	
+	$(document).ajaxComplete(function() {
+	  $('#Go').html('Go');
+	  $('#Go').prop("disabled", false);
+	});
+  
+  
+	$("#Go").click(function(e) {
+		e.preventDefault();
+		
+		$(this).prop("disabled", true);
+		$(this).html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp;Loading...');
+		$("#tbodyid").empty();
+		
+		var Commodity = $('#Commodity').val();
+		var Year = $('#Year').val();
+		var Metric = $('#Metric').val();
+		var url = "fetch_quickstats.php?commodity=" + Commodity + "&year=" + Year + "&metric=" + Metric;
+		console.log('URL: ' + url);
+		
+		$.ajax({
+			url: url,
+			method: "GET",
+			success: function(data) {
+			  console.log(data);
+			  var period = [];
+			  var value = [];
+			  var trHTML = '';
+			  var ct = data[0].short_desc;
+
+			  for(var i in data) {
+				period.push(data[i].year + ' ' + data[i].reference_period_desc);
+				value.push((data[i].Value).replace(/,/g,''));
+				
+				trHTML += '<tr><td>' + data[i].year + ' ' + data[i].reference_period_desc + '</td><td>' + data[i].Value + '</td><td></td><td></td><td></td></tr>';
+			  }
+
+			  $('#DataTable1 tbody').append(trHTML);
+			  $('#ChartTitle').text(ct);
+				
+			  var chartdata = {
+				labels: period,
+				datasets : [
+				  {
+					lineTension: 0,
+					backgroundColor: '#007bff',
+					borderColor: '#007bff',
+					borderWidth: 4,
+					pointBackgroundColor: '#007bff',
+					data: value
+				  }
+				],
+			  };
+
+			  $('#mycanvas').remove(); $('#canvas-container').append('<canvas id="mycanvas"><canvas>');
+			  var ctx = $("#mycanvas");
+
+			  chart = new Chart(ctx, {
+				type: 'bar',
+				data: chartdata,
+				options: {
+				  scales: {
+					yAxes: [{
+					  ticks: {
+						beginAtZero: true
+						//suggestedMin: 150
+					  }
+					}]
+				  },
+				  legend: {
+					display: false
+				  }
+				}
+			  });
+			},
+			error: function(data) {
+			  console.log(data);
+			}
+		  });
+		});
+});

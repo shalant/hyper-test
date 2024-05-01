@@ -1,0 +1,129 @@
+<div class="container" *ngIf="!isValidQuery">
+    <h3>Query is not applicable, no one likes soybean liquor</h3>
+    <app-404></app-404>
+</div>
+<div class="container" *ngIf="isValidQuery">
+    <div class="row mt-3" >
+        <div class="col-md-4">
+            <h1 class="" *ngIf="!newUsdaData$">Usda Data by State</h1>
+            <h1 *ngIf="newUsdaData$">{{selectedShortDesc}}</h1>
+        </div>
+        <div class="col-md-2">
+            <select class="form-select mt-2"  aria-label="Default select example" (change)="onSelectState($event)">
+                <option selected>State</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>            </select>
+        </div>
+        <div class="col-md-2">
+            <select class="form-select mt-2" aria-label="Default select example" (change)="onSelectCommodity($event)">
+                <option selected>Commodity</option>
+                <option value="CORN">Corn</option>
+                <option value="SOYBEANS">Soybeans</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select class="form-select mt-2"  aria-label="Default select example" (change)="onSelectMetric($event)">
+                <option selected>Metric</option>
+                <option value="AREA PLANTED">Acres Planted</option>
+                <option value="AREA HARVESTED">Acres Harvested</option>
+                <option value="CONDITION">Condition (excellent)</option>
+                <option value="ETHANOL USAGE">Ethanol Usage</option>
+                <option value="PRODUCTION">Production</option>
+                <option value="PROGRESS">Progress - Emerged</option>
+                <option value="RESIDUAL USAGE">Residual Usage</option>
+                <option value="STOCKS">Stocks</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <select class="form-select mt-2" aria-label="Default select example" (change)="onSelectYear($event)">
+                <option selected>Years</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+            </select>
+        </div>
+        <div class="col-md-1 mt-2">
+            <button class="btn btn-primary" (click)="loadDataWithParams(selectedMetric, selectedCommodity, selectedYear, selectedShortDesc)">Go</button>
+        </div>
+    </div>
+
+    <div>
+        <canvas id="barchart"></canvas>
+    </div>
+    
+
+    <ng-container *ngIf="newUsdaData$ | async as newUsdaData">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <th>State</th>
+                <th>Year</th>
+                <th>County</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of newUsdaData">
+                    <td>{{item.state_alpha}}</td>
+                    <td>{{item.year}}</td>
+                    <td>{{item.county_name}}</td>
+                    <td>{{item.value}}</td>
+                    <td>
+                        <a class="btn btn-primary">Edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+</div>
+

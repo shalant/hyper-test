@@ -106,6 +106,12 @@ import { ElementsComponent } from './forms/elements/elements.component'
 import { PreloaderComponent } from './extrapages/preloader/preloader.component'
 import { LandingComponent } from '../extrapage/landing/landing.component'
 import { UsdaDataComponent } from './zaner/usda-data/usda-data.component'
+import { UsdaData2Component } from './zaner/usda-data-2/usda-data-2.component'
+import { UsdaData3Component } from './zaner/usda-data-3/usda-data-3.component'
+import { WorldMapComponent } from './zaner/world-map/world-map.component'
+import { UsaMapComponent } from './zaner/usa-map/usa-map.component'
+import { UsdaDataByStateComponent } from './zaner/usda-data-by-state/usda-data-by-state.component'
+import { AnychartComponent } from './zaner/anychart/anychart.component'
 
 export const PAGE_ROUTES: Route[] = [
   // Set home route to landing page
@@ -117,10 +123,34 @@ export const PAGE_ROUTES: Route[] = [
   },
   {
     path: 'usda-data',
-    component: UsdaDataComponent,
-    data: { title: 'Usda-Data' },
+    component: UsdaData3Component,
+    data: { title: 'Usda Data' },
   },
-
+  {
+    path: 'usda-data-by-state',
+    component: UsdaDataByStateComponent,
+    data: { title: 'Usda Data by State' },
+  },
+  {
+    path: 'world-map',
+    component: WorldMapComponent,
+    data: { title: 'World Map' },
+  },
+  {
+    path: 'usa-map',
+    component: UsaMapComponent,
+    data: { title: 'USA Map' },
+  },
+  {
+    path: 'any-chart',
+    component: AnychartComponent,
+    data: { title: 'Any Chart' },
+  },
+  // {
+  //   path: 'usda-data-3',
+  //   component: UsdaData3Component,
+  //   data: { title: 'Usda-Data-3' },
+  // },
   // Dashboard
   // { path: '', component: IndexComponent, data: { title: 'Dashboard' } },
   {

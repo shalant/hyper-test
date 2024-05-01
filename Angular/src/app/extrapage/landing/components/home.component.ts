@@ -12,18 +12,10 @@ import { Component } from '@angular/core'
             <div class="mt-md-4">
               <div>
                 <span class="badge bg-danger font-13 rounded-pill">New</span>
-                <span class="text-white-50 ms-1">Welcome to the new Zaner Agricultural Research App</span>
+                <span class="text-white-50 ms-1">Updated features added!</span>
               </div>
-              <h2 class="text-white fw-normal mb-4 mt-3 lh-base">
-                Hyper - Responsive Web UI Kit & Dashboard Template
-              </h2>
-
-              <p class="mb-4 font-16 text-white-50">
-                Hyper is a fully featured dashboard and admin template comes
-                with tones of well designed UI elements, components, widgets and
-                pages.
-              </p>
-
+              <h2 class="text-white fw-normal mb-4 mt-3 lh-base">Welcome to the new Zaner Agricultural Research App</h2>
+              <p class="mb-4 font-16 text-white-50">Farm insights that come from the fields and not just screens</p>
               <a
                 href="javascript:void(0);"
                 class="btn btn-lg font-16 btn-success me-1"

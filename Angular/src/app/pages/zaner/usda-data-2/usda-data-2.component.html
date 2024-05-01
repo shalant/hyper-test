@@ -6,21 +6,21 @@
         <div class="col-md-2">
             <select class="form-select mt-2" aria-label="Default select example" (change)="onSelectMetric($event)">
                 <option selected>Metric</option>
-                <option value="Acres Planted">Acres Planted</option>
-                <option value="Acres Harvested">Acres Harvested</option>
-                <option value="Condition (excellent)">Condition (excellent)</option>
-                <option value="Ethanol Usage">Ethanol Usage</option>
-                <option value="Production">Production</option>
-                <option value="Progress - Emerged">Progress - Emerged</option>
+                <option value="AREA PLANTED">Acres Planted</option>
+                <option value="AREA HARVESTED">Acres Harvested</option>
+                <option value="CONDITION, MEASURED IN PCT EXCELLENT">Condition (excellent)</option>
+                <option value="USAGE">Ethanol Usage</option>
+                <option value="PRODUCTION">Production</option>
+                <option value="PROGRESS">Progress - Emerged</option>
                 <option value="Residual Usage">Residual Usage</option>
-                <option value="Stocks">Stocks</option>
+                <option value="STOCKS">Stocks</option>
             </select>
         </div>
         <div class="col-md-2">
             <select class="form-select mt-2" aria-label="Default select example" (change)="onSelectCommodity($event)">
                 <option selected>Commodity</option>
-                <option value="Corn">Corn</option>
-                <option value="Soybeans">Soybeans</option>
+                <option value="CORN">Corn</option>
+                <option value="SOYBEANS">Soybeans</option>
             </select>
         </div>
         <div class="col-md-2">
@@ -37,19 +37,20 @@
             <button class="btn btn-primary" (click)="loadDataWithParams(selectedMetric, selectedCommodity, selectedYear)">Go</button>
         </div>
     </div>
-    
-    <ng-container *ngIf="blah">
-        <p>{{blah}}</p>
-        <!-- <ng-container *ngIf="usdaDataWithParams$"> -->
-        <!-- <p *ngFor="let item of usdaDataWithParams">{{usdaDataWithParams$}}</p> -->
-    </ng-container>
 
-    <div>
+    <!-- <ng-container *ngIf="newUsdaData$ | async as newUsdaData"> -->
+        <div>
         <canvas id="barchart"></canvas>
     </div>
+    <!-- </ng-container> -->
 
-    <ng-container *ngIf="usdaData$ | async as usdaData">
-        <table class="table table-bordered mt-3">
+    <ng-container *ngIf="!newUsdaData$">
+        test
+    </ng-container>
+
+    <!-- <ng-container *ngIf="newUsdaData$ | async as newUsdaData"> -->
+        <ng-container *ngIf="newUsdaData$ | async as newUsdaData">
+            <table class="table table-bordered mt-3">
             <thead>
                 <th>State</th>
                 <th>Year</th>
@@ -57,7 +58,7 @@
                 <th>Actions</th>
             </thead>
             <tbody>
-                <tr *ngFor="let item of usdaData">
+                <tr *ngFor="let item of newUsdaData">
                     <td>{{item.state_alpha}}</td>
                     <td>{{item.year}}</td>
                     <td>{{item.value}}</td>
@@ -70,27 +71,3 @@
     </ng-container>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<script>
-  const ctx = document.getElementById('myChart');
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>

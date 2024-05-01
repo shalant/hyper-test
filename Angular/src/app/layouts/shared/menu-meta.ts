@@ -6,11 +6,47 @@ export const MENU: MenuItem[] = [
     label: 'navigation',
     isTitle: true,
   },
+  // {
+  //   key: 'UsdaData',
+  //   label: 'UsdaData',
+  //   icon: 'uil-chart-line',
+  //   link: '/usda-data'
+  // },
+  // {
+  //   key: 'UsdaData2',
+  //   label: 'UsdaData2',
+  //   icon: 'uil-signal-alt',
+  //   link: '/usda-data-2'
+  // },
   {
-    key: 'UsdaData',
-    label: 'UsdaData',
-    icon: 'uil-chart-line',
+    key: 'UsdaData3',
+    label: 'Usda Data',
+    icon: 'uil-chart-bar',
     link: '/usda-data'
+  },
+  {
+    key: 'UsdaDataByState',
+    label: 'Usda Data By State',
+    icon: 'uil-map',
+    link: '/usda-data-by-state'
+  },
+  {
+    key: 'worldmap',
+    label: 'World Map',
+    icon: 'uil-map-marker',
+    link: '/world-map'
+  },
+  {
+    key: 'usamap',
+    label: 'USA Map',
+    icon: 'uil-map-marker',
+    link: '/usa-map'
+  },
+  {
+    key: 'anychart',
+    label: 'Any Chart',
+    icon: 'uil-map-marker',
+    link: '/any-chart'
   },
   {
     key: 'dashboards',

@@ -10,15 +10,15 @@ import { Component } from '@angular/core'
         <div class="row">
           <div class="col-lg-6">
             <img
-              src="assets/images/logo.png"
+              src="assets/images/zaner/zaner-logo.png"
               alt="logo"
               class="logo-dark"
               height="22"
             />
             <p class="text-light text-opacity-50 mt-4">
-              Hyper makes it easier to build better websites with <br />
-              great speed. Save hundreds of hours of design <br />
-              and development by using it.
+              Zaner Agriculture Research gives farmers <br />
+              industry-leading data <br />
+              to improve hedging and gain increased accuracy.
             </p>
 
             <ul class="social-list list-inline mt-3">
@@ -163,9 +163,9 @@ import { Component } from '@angular/core'
           <div class="col-lg-12">
             <div class="mt-5">
               <p class="text-light text-opacity-50 mt-4 text-center mb-0">
-                © 2018 -
+                ©
                 {{ year }}
-                Hyper. Design and coded by Coderthemes
+                Zaner Agriculture Research
               </p>
             </div>
           </div>
@@ -175,6 +175,7 @@ import { Component } from '@angular/core'
   `,
   styles: ``,
 })
+
 export class FooterComponent {
   year = new Date().getFullYear()
 }

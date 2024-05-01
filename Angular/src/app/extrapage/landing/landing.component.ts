@@ -26,10 +26,12 @@ import { RouterModule } from '@angular/router'
     RouterModule,
   ],
   template: `
+      <app-home></app-home>
+
     <!-- NAVBAR START -->
-    <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
+    <!-- <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
       <div class="container">
-        <!-- logo -->
+         logo 
         <a routerLink="/" class="navbar-brand me-lg-5">
           <img
             src="assets/images/zaner/zaner-logo.png"
@@ -51,9 +53,9 @@ import { RouterModule } from '@angular/router'
           <i class="mdi mdi-menu"></i>
         </button>
 
-        <!-- menus -->
+         menus 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <!-- left menu -->
+           left menu 
           <ul class="navbar-nav me-auto align-items-center">
             <li class="nav-item mx-lg-1">
               <a class="nav-link active" href="/">Home</a>
@@ -69,7 +71,7 @@ import { RouterModule } from '@angular/router'
             </li>
           </ul>
 
-          <!-- right menu -->
+           right menu 
           <ul class="navbar-nav ms-auto align-items-center">
             <li class="nav-item me-0">
               <a
@@ -89,35 +91,35 @@ import { RouterModule } from '@angular/router'
           </ul>
         </div>
       </div>
-    </nav>
+    </nav> -->
     <!-- NAVBAR END -->
 
     <!-- START HERO -->
-    <app-home></app-home>
+    <!-- <app-home></app-home> -->
     <!-- END HERO -->
 
     <!-- START SERVICES -->
-    <app-service></app-service>
+    <!-- <app-service></app-service> -->
     <!-- END SERVICES -->
 
     <!-- START FEATURES 1 -->
-    <app-feature1></app-feature1>
+    <!-- <app-feature1></app-feature1> -->
     <!-- END FEATURES 1 -->
 
     <!-- START FEATURES 2 -->
-    <app-feature2></app-feature2>
+    <!-- <app-feature2></app-feature2> -->
     <!-- END FEATURES 2 -->
 
     <!-- START PRICING -->
-    <app-pricing></app-pricing>
+    <!-- <app-pricing></app-pricing> -->
     <!-- END PRICING -->
 
     <!-- START FAQ -->
-    <app-faq></app-faq>
+    <!-- <app-faq></app-faq> -->
     <!-- END FAQ -->
 
     <!-- START CONTACT -->
-    <app-contact></app-contact>
+    <!-- <app-contact></app-contact> -->
     <!-- END CONTACT -->
 
     <!-- START FOOTER -->
