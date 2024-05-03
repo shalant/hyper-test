@@ -12,17 +12,18 @@ export const MENU: MenuItem[] = [
   //   icon: 'uil-chart-line',
   //   link: '/usda-data'
   // },
-  // {
-  //   key: 'UsdaData2',
-  //   label: 'UsdaData2',
-  //   icon: 'uil-signal-alt',
-  //   link: '/usda-data-2'
-  // },
+  
   {
     key: 'UsdaData3',
     label: 'Usda Data',
     icon: 'uil-chart-bar',
     link: '/usda-data'
+  },
+  {
+    key: 'UsdaDataV2',
+    label: 'UsdaDataV2',
+    icon: 'uil-signal-alt',
+    link: '/usda-data-v2'
   },
   {
     key: 'UsdaDataByState',
@@ -41,12 +42,6 @@ export const MENU: MenuItem[] = [
     label: 'USA Map',
     icon: 'uil-map-marker',
     link: '/usa-map'
-  },
-  {
-    key: 'anychart',
-    label: 'Any Chart',
-    icon: 'uil-map-marker',
-    link: '/any-chart'
   },
   {
     key: 'dashboards',

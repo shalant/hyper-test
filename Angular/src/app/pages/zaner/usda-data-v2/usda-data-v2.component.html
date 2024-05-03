@@ -1,0 +1,76 @@
+<div class="container">
+
+  <app-pagetitle title="Charts from Dan's suggestions" subtitle="Using Apex Charts" pagetitle="Usda Data V2">
+  </app-pagetitle>
+  <p>Started on May 2nd, from a good discussion with Dan</p>
+  <ul>
+    <li>first goal is to display ethanol usage by year</li>
+    <li>second goal is to display stockpiles by year</li>
+    <li>Some charts correlating with price</li>
+  </ul>
+  <div class="row">
+    <div class="d-flex flex-row">
+      <div class="col-md-5">
+        <h1>Compare Usda Data year to year</h1>
+        <p>Select multiple years for comparison</p>
+      </div>
+      <div class="mx-1">
+        <select class="form-select mt-2" aria-label="Default select example">
+          <option selected>Commodity</option>
+          <option value="CORN">Corn</option>
+          <option value="SOYBEANS">Soybeans</option>
+        </select>
+      </div>
+      <div class="mx-1" style="width: 10%;">
+        <select class="form-select mt-2" aria-label="Default select example">
+          <option selected>Metric</option>
+          <option value="AREA PLANTED">Acres Planted</option>
+          <option value="AREA HARVESTED">Acres Harvested</option>
+          <option value="CONDITION">Condition (excellent)</option>
+          <option value="ETHANOL USAGE">Ethanol Usage</option>
+          <option value="PRODUCTION">Production</option>
+          <option value="PROGRESS">Progress - Emerged</option>
+          <option value="RESIDUAL USAGE">Residual Usage</option>
+          <option value="STOCKS">Stocks</option>
+        </select>
+      </div>
+      <div class="mx-1">
+        <select class="form-select multiple mt-2" aria-label="Default select example">
+          <option selected>Years</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+          <option value="2021">2021</option>
+          <option value="2020">2020</option>
+        </select>
+      </div>
+      <div class="mt-2 mx-1">
+        <button class="btn btn-primary mx-1" id="load-usda-button">Go</button>
+        <button class="btn btn-secondary mx-1">Refresh</button>
+      </div>
+    </div>
+
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="header-title mb-4">Dashed Line Chart</h4>
+          <div dir="ltr">
+            <div id="line-chart-dashed" class="apex-charts" data-colors="#6c757d,#0acf97,#39afd1">
+              <apx-chart [chart]="dashedlineChart.chart!" [dataLabels]="dashedlineChart.dataLabels!"
+                [stroke]="dashedlineChart.stroke!" [series]="dashedlineChart.series!"
+                [markers]="dashedlineChart.markers!" [xaxis]="dashedlineChart.xaxis!" [colors]="dashedlineChart.colors!"
+                [tooltip]="dashedlineChart.tooltip!" [grid]="dashedlineChart.grid!" [legend]="dashedlineChart.legend!">
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+        <!-- end card body-->
+      </div>
+      <!-- end card -->
+    </div>
+    <!-- end col-->
+  </div>
+  <!-- end row-->
+
+</div>

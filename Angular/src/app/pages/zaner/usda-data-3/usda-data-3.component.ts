@@ -37,6 +37,8 @@ export class UsdaData3Component implements OnInit, OnDestroy {
   timeframe: string = '';
   xAxis: string[] = [];
 
+  tempDecimal: number = 1;
+
   getUsdaSubscription?: Subscription;
 
   constructor(private usdaService: UsdaServiceService,
@@ -45,11 +47,66 @@ export class UsdaData3Component implements OnInit, OnDestroy {
   ngOnInit(): void { }
 
   onSelectCommodity(event: Event) {
+    debugger
     this.selectedCommodity = (event.target as HTMLSelectElement).value;
   }
 
   onSelectMetric(event: Event) {
     this.selectedMetric = (event.target as HTMLSelectElement).value;
+    // switch (this.selectedMetric) {
+    //   case 'AREA PLANTED':
+    //     if (this.selectedCommodity == 'CORN') {
+    //       this.selectedShortDesc = `CORN - ACRES PLANTED`;
+    //     }
+    //     else {
+    //       this.selectedShortDesc = `SOYBEANS - ACRES PLANTED`;
+    //     }
+    //     console.log('selected commodity:' + this.selectedCommodity)
+    //     break;
+    //   case 'AREA HARVESTED':
+    //     this.selectedShortDesc = `${this.selectedCommodity} - ACRES HARVESTED`;
+    //     break;
+    //   case 'CONDITION':
+    //     debugger
+    //     this.selectedShortDesc = `${this.selectedCommodity} - CONDITION, MEASURED IN PCT EXCELLENT`;
+    //     break;
+    //   case 'ETHANOL USAGE':
+    //     this.selectedShortDesc = `CORN, FOR FUEL ALCOHOL - USAGE, MEASURED IN BU`;
+    //     break;
+    //   case 'PRODUCTION':
+    //     if (this.selectedCommodity == 'CORN') {
+    //       this.selectedShortDesc = `CORN, GRAIN - PRODUCTION, MEASURED IN BU`;
+    //     }
+    //     else {
+    //       this.selectedShortDesc = `SOYBEANS - PRODUCTION, MEASURED IN BU`;
+    //     }
+    //     break;
+    //   case 'PROGRESS':
+    //     this.selectedShortDesc = `${this.selectedCommodity} - PROGRESS, MEASURED IN PCT EMERGED`;
+    //     break;
+    //   case 'RESIDUAL USAGE':
+    //     this.selectedShortDesc = `CORN, FOR OTHER PRODUCTS (EXCL ALCOHOL) - USAGE, MEASURED IN BU`;
+    //     break;
+    //   case 'STOCKS':
+    //     debugger
+    //     if (this.selectedCommodity == 'CORN') {
+    //       this.selectedShortDesc = `CORN, GRAIN - STOCKS, MEASURED IN BU`;
+    //     }
+    //     else {
+    //       this.selectedShortDesc = 'SOYBEANS - STOCKS, MEASURED IN BU';
+    //     }
+    //     break;
+    //   default:
+    //     break;
+    // }
+  }
+
+  onSelectYear(event: Event) {
+    this.selectedYear = (event.target as HTMLSelectElement).value;
+  }
+
+  loadDataWithParams(selectedMetric: string, selectedCommodity: string, selectedYear: string, selectedShortDesc: string): void {
+    debugger
     switch (this.selectedMetric) {
       case 'AREA PLANTED':
         if (this.selectedCommodity == 'CORN') {
@@ -64,7 +121,7 @@ export class UsdaData3Component implements OnInit, OnDestroy {
         this.selectedShortDesc = `${this.selectedCommodity} - ACRES HARVESTED`;
         break;
       case 'CONDITION':
-
+        debugger
         this.selectedShortDesc = `${this.selectedCommodity} - CONDITION, MEASURED IN PCT EXCELLENT`;
         break;
       case 'ETHANOL USAGE':
@@ -85,6 +142,7 @@ export class UsdaData3Component implements OnInit, OnDestroy {
         this.selectedShortDesc = `CORN, FOR OTHER PRODUCTS (EXCL ALCOHOL) - USAGE, MEASURED IN BU`;
         break;
       case 'STOCKS':
+        debugger
         if (this.selectedCommodity == 'CORN') {
           this.selectedShortDesc = `CORN, GRAIN - STOCKS, MEASURED IN BU`;
         }
@@ -94,15 +152,7 @@ export class UsdaData3Component implements OnInit, OnDestroy {
         break;
       default:
         break;
-    }
-  }
-
-  onSelectYear(event: Event) {
-    this.selectedYear = (event.target as HTMLSelectElement).value;
-  }
-
-  loadDataWithParams(selectedMetric: string, selectedCommodity: string, selectedYear: string, selectedShortDesc: string): void {
-    if(!this.value) {
+    }    if(!this.value) {
       this.isLoading = true;
     }
     if(this.isLoading) {
@@ -119,21 +169,22 @@ export class UsdaData3Component implements OnInit, OnDestroy {
       this.value = [];
       this.period = [];
     }
-    console.log(selectedMetric, selectedCommodity, selectedYear);
+    console.log(selectedMetric, selectedCommodity, selectedYear, selectedShortDesc);
     // console.log(`https://localhost:7281/api/UsdaInfo?Metric=${selectedMetric}&Commodity=${selectedCommodity}&Year=${selectedYear}&short_desc=${this.selectedShortDesc}`)
-    console.log(parseInt("5456789564"))
+    
     if (this.isValidQuery) {
+      debugger
       this.newUsdaData$ = this.http.get<Datum[]>(`https://localhost:7281/api/UsdaInfo?Metric=${selectedMetric}&Commodity=${selectedCommodity}&Year=${selectedYear}&short_desc=${this.selectedShortDesc}`)
 
       this.getUsdaSubscription = this.newUsdaData$
         .subscribe({
           next: (response) => {
             response.forEach(element => {
-
+              
               switch(selectedMetric) {
                 case 'AREA PLANTED':
                     this.period.push(element.year + ' ' + element.reference_period_desc)
-                    this.value.push(parseInt(element.value))
+                    this.value.push(parseInt((element.value).replace(/[^0-9.]/g,'')))
                     break;
                 case 'AREA HARVESTED':
                   if(element.domaincat_desc == 'NOT SPECIFIED' 
@@ -141,40 +192,46 @@ export class UsdaData3Component implements OnInit, OnDestroy {
                     && (element.short_desc == 'CORN, GRAIN - ACRES HARVESTED' 
                       || element.short_desc == 'SOYBEANS - ACRES HARVESTED')) {
                     this.period.push(element.year + ' ' + element.reference_period_desc)
-                    this.value.push(parseInt(element.value))
+                    this.value.push(parseInt((element.value).replace(/[^0-9.]/g,'')))
                   }
                   break;
                 case 'CONDITION':
+                  if(selectedCommodity = 'CORN') {
+                    this.selectedShortDesc = 'CORN - CONDITION, MEASURED IN PCT EXCELLENT'
+                  }
+                  else {
+                    this.selectedShortDesc = 'SOYBEANS - CONDITION, MEASURED IN PCT EXCELLENT'
+                  }
                   this.period.push(element.year + ' ' + element.reference_period_desc)
-                  this.value.push(parseInt(element.value))
+                  this.value.push(parseInt((element.value).replace(/[^0-9.]/g,'')))
                   break;
                 case 'ETHANOL USAGE':
                   if(element.domaincat_desc !== 'TYPE OF OPERATION: (DRY MILL PLANT)' 
                     && element.domaincat_desc !== 'TYPE OF OPERATION: (WET MILL PLANT)') {
                     this.period.push(element.year + ' ' + element.reference_period_desc)
-                    this.value.push(parseInt(element.value))
+                    this.value.push(parseInt((element.value).replace(/[^0-9.]/g,'')))
                   }
                   break;
                 case 'PRODUCTION':
-                  if(element.domaincat_desc == 'NOT SPECIFIED') {
+                  if(element.domaincat_desc == 'NOT SPECIFIED' && element.source_desc == 'SURVEY') {
                   this.period.push(element.year + ' ' + element.reference_period_desc)
-                  this.value.push(parseInt(element.value));
+                  this.value.push(parseInt((element.value).replace(/[^0-9.]/g,'')))
                 }
                   break;
                 case 'PROGRESS':
                   if(element.domaincat_desc == 'NOT SPECIFIED') {
                     this.period.push(element.year + ' ' + element.reference_period_desc)
-                    this.value.push(parseInt(element.value))
+                    this.value.push(parseInt((element.value).replace(/[^0-9.]/g,'')))
                   }
                   break;
                 case 'RESIDUAL USAGE':
                   this.period.push(element.year + ' ' + element.reference_period_desc)
-                  this.value.push(parseInt(element.value))
+                  this.value.push(parseInt((element.value).replace(/[^0-9.]/g,'')))
                   break;
                 case 'STOCKS':
                   if(element.domaincat_desc == 'NOT SPECIFIED') {
                     this.period.push(element.year + ' ' + element.reference_period_desc)
-                    this.value.push(parseInt(element.value))
+                    this.value.push(parseInt((element.value).replace(/[^0-9.]/g,'')))
                   }
                   break;
                 default:
@@ -184,6 +241,7 @@ export class UsdaData3Component implements OnInit, OnDestroy {
               // this.newRealData.push(parseInt(element.value))
               this.unit = response[0].unit_desc;
             });
+            
             console.log('x axis: ' + this.period)
             console.log('y axis: ' + this.value)
             this.RenderChart(this.period, this.value, 'bar', 'barchart');

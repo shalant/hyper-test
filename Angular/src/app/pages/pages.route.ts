@@ -111,7 +111,7 @@ import { UsdaData3Component } from './zaner/usda-data-3/usda-data-3.component'
 import { WorldMapComponent } from './zaner/world-map/world-map.component'
 import { UsaMapComponent } from './zaner/usa-map/usa-map.component'
 import { UsdaDataByStateComponent } from './zaner/usda-data-by-state/usda-data-by-state.component'
-import { AnychartComponent } from './zaner/anychart/anychart.component'
+import { UsdaDataV2Component } from './zaner/usda-data-v2/usda-data-v2.component'
 
 export const PAGE_ROUTES: Route[] = [
   // Set home route to landing page
@@ -125,6 +125,11 @@ export const PAGE_ROUTES: Route[] = [
     path: 'usda-data',
     component: UsdaData3Component,
     data: { title: 'Usda Data' },
+  },
+  {
+    path: 'usda-data-v2',
+    component: UsdaDataV2Component,
+    data: { title: 'Usda Data V2' },
   },
   {
     path: 'usda-data-by-state',
@@ -141,11 +146,7 @@ export const PAGE_ROUTES: Route[] = [
     component: UsaMapComponent,
     data: { title: 'USA Map' },
   },
-  {
-    path: 'any-chart',
-    component: AnychartComponent,
-    data: { title: 'Any Chart' },
-  },
+  
   // {
   //   path: 'usda-data-3',
   //   component: UsdaData3Component,
