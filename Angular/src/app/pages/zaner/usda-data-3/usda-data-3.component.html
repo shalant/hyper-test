@@ -2,12 +2,14 @@
     <h3>Query is not applicable, no one likes soybean liquor</h3>
     <app-404></app-404>
 </div>
+
 <div class="container" *ngIf="isValidQuery">
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row mt-2">
         <!-- <div class="row mt-3" > -->
         <div class="col-md-4">
             <h1 *ngIf="!newUsdaData$">List of Usda Data</h1>
-            <h1 *ngIf="newUsdaData$">{{selectedShortDesc}}</h1>
+            <!-- <h1 *ngIf="newUsdaData$">{{selectedShortDesc}}</h1> -->
+            <img *ngIf="newUsdaData$" src="assets/images/zaner/zaner-ag-hedge-white-logo.svg" alt="Zaner Ag Hedge" height="100" style="background-color: #727cf5;" class="p-2">
         </div>
         <div class="col-md-8 d-flex flex-row">
             <div class="mx-1">

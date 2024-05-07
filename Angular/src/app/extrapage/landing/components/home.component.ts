@@ -33,6 +33,7 @@ import { Component } from '@angular/core'
                 alt=""
                 class="img-fluid"
               />
+
             </div>
           </div>
         </div>

@@ -19,8 +19,6 @@ import { Error404Component } from "../../../extrapage/404/404.component";
 })
 
 export class UsdaData3Component implements OnInit, OnDestroy {
-
-  
   newUsdaData$?: Observable<Datum[]>;
   isValidQuery: boolean = true;
   isLoading: boolean = false;
@@ -176,8 +174,7 @@ export class UsdaData3Component implements OnInit, OnDestroy {
     
     if (this.isValidQuery) {
       debugger
-      // this.newUsdaData$ = this.http.get<Datum[]>(`https://localhost:7281/api/UsdaInfo?Metric=${selectedMetric}&Commodity=${selectedCommodity}&Year=${selectedYear}&short_desc=${this.selectedShortDesc}`)
-      this.newUsdaData$ = this.http.get<Datum[]>(`https://localhost:7281/api/GetUsdaDataRefactored?Metric=${selectedMetric}&Commodity=${selectedCommodity}&Year=${selectedYear}&short_desc=${this.selectedShortDesc}`)
+      this.newUsdaData$ = this.http.get<Datum[]>(`https://localhost:7281/api/UsdaInfo?Metric=${selectedMetric}&Commodity=${selectedCommodity}&Year=${selectedYear}&short_desc=${this.selectedShortDesc}`)
 
       this.getUsdaSubscription = this.newUsdaData$
         .subscribe({
@@ -279,20 +276,7 @@ export class UsdaData3Component implements OnInit, OnDestroy {
             //   suggestedMax: 'max-int-value'       
             // }
           }
-        },
-        legend: {
-          display: true
-        },
-        plugins: {
-          title: {
-            display: true,
-            text: this.selectedShortDesc,
-            font: {
-              size: 25,
-              family: "Nunito"
-            }
-          }
-      }
+        }
       }
     });
   }
